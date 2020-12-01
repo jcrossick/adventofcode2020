@@ -199,7 +199,7 @@ const inputString = `1293
 1708
 1396`
 
-async function run() {
+function run() {
 
     const inputArray = inputString.split(/\r?\n/).map(s => parseInt(s.replace(/\s/g, '')));
 
@@ -217,4 +217,15 @@ async function run() {
     }
 }
 
+function refactoredRun() {
+    const inputArray = inputString.split(/\r?\n/).map(s => parseInt(s.replace(/\s/g, '')));
+
+    const part1 = inputArray.reduce((acc, val1, index1) => {
+        const match = inputArray.slice(index1).filter(val2 => val1 + val2 == 2020);      
+        return match[0] ? val1*match[0] : acc;
+    });
+    console.log("refactored part 1 answer is", part1);
+}
+
 run();
+refactoredRun();
