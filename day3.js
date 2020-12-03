@@ -4,17 +4,24 @@ const parseLandscape = (landscape) => {
     return landscape.split(/\r?\n/);
 }
 
-const calculatePath = (landscape, rightshift) => {
+const calculateTreesHit = (landscape, rightshift, downshift) => {
     const parsedLandscape = parseLandscape(landscape);
     const mod = parsedLandscape[0].length;
 
     let treesHit = 0;
-    for (i = 0; i < parsedLandscape.length; i++) {
-        if (parsedLandscape[i].charAt((i*rightshift)%mod) == '#') {
+    for (i = 0; i < parsedLandscape.length; i = i+downshift) {
+        if (parsedLandscape[i].charAt(((i/downshift)*rightshift)%mod) == '#') {
             treesHit++;
         }
     }
-    console.log('NUmber of trees hit:', treesHit);
+    return treesHit;
 }
 
-calculatePath(landscape, 3);
+
+const r1d1 = calculateTreesHit(landscape, 1, 1);
+const r3d1 = calculateTreesHit(landscape, 3, 1);
+const r5d1 = calculateTreesHit(landscape, 5, 1);
+const r7d1 = calculateTreesHit(landscape, 7, 1);
+const r1d2 = calculateTreesHit(landscape, 1, 2);
+
+console.log("The product is", r1d1*r3d1*r5d1*r7d1*r1d2);
