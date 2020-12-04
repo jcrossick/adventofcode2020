@@ -1,5 +1,5 @@
 
-const testData = `eyr:2027
+const testDataParse = `eyr:2027
 hcl:#602927
 hgt:186cm byr:1939 iyr:2019 pid:552194973 ecl:hzl
 
@@ -10,6 +10,31 @@ hgt:164cm
 
 hcl:#fffffd
 byr:1951 cid:321 iyr:2017 eyr:2022 ecl:brn hgt:62in pid:#6ef4e1`
+
+const testDataCount = `byr:1980
+iyr:2019
+eyr:9999
+hgt:1m60
+hcl:grey
+ecl:grey
+pid:1234
+cid:5679
+
+byr:1980
+iyr:2019
+eyr:9999
+hgt:1m60
+hcl:grey
+ecl:grey
+pid:1234
+
+iyr:2019
+eyr:9999
+hgt:1m60
+hcl:grey
+ecl:grey
+pid:1234
+cid:5679`
 
 
 const passportData = `eyr:2027
@@ -1109,4 +1134,4 @@ iyr:1930 eyr:2024
 
 ecl:oth hcl:#602927 eyr:2025 iyr:2013 hgt:151cm byr:1992 pid:812583062`
 
-module.exports = {passportData, testData}
+module.exports = {passportData, testDataParse, testDataCount}

@@ -1,5 +1,5 @@
-const { testData } = require("./day4data");
-const { parseData } = require("./day4");
+const { testDataParse, testDataCount } = require("./day4data");
+const { parseData, findValidPassports } = require("./day4");
 
 test("parseData - splits correctly", () => {
   const val1 = {
@@ -33,5 +33,10 @@ test("parseData - splits correctly", () => {
     pid: "#6ef4e1",
   };
 
-  expect(parseData(testData)).toEqual([val1, val2, val3]);
+  expect(parseData(testDataParse)).toEqual([val1, val2, val3]);
 });
+
+
+test("validateData - counts correctly", () => {
+    expect(findValidPassports(parseData(testDataCount))).toHaveLength(2);
+  });
