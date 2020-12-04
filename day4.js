@@ -1,7 +1,7 @@
 const { testData, passportData } = require("./day4data");
 
 const parseData = (input) => {
-    return testData;
+    return input.split(/\n\n/);
 };
 
 module.exports = { parseData };

@@ -1101,4 +1101,4 @@ iyr:1930 eyr:2024
 
 ecl:oth hcl:#602927 eyr:2025 iyr:2013 hgt:151cm byr:1992 pid:812583062`
 
-module.exports = {passportData}
+module.exports = {passportData, testData}
