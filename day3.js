@@ -24,4 +24,5 @@ const r5d1 = calculateTreesHit(landscape, 5, 1);
 const r7d1 = calculateTreesHit(landscape, 7, 1);
 const r1d2 = calculateTreesHit(landscape, 1, 2);
 
+console.log("The numbers are", r1d1, r3d1, r5d1, r7d1, r1d2);
 console.log("The product is", r1d1*r3d1*r5d1*r7d1*r1d2);
