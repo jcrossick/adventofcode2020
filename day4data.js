@@ -13,11 +13,11 @@ byr:1951 cid:321 iyr:2017 eyr:2022 ecl:brn hgt:62in pid:#6ef4e1`
 
 const testDataCount = `byr:1980
 iyr:2019
-eyr:9999
-hgt:1m60
-hcl:grey
-ecl:grey
-pid:1234
+eyr:2029
+hgt:160cm
+hcl:#60292f
+ecl:hzl
+pid:123456789
 cid:5679
 
 byr:1980
