@@ -2,38 +2,41 @@ const { input } = require("./day5data");
 
 const parseData = (data) => data.split(/\r?\n/);
 
-const calcRow = (input, rowCount) => {
-  const row = input.substring(0, rowCount);
-  const seat = input.substring(rowCount);
-  const rowNum = parseInt(row.replaceAll(/F/g, 0).replaceAll(/B/g, 1), 2);
-  const seatNum = parseInt(seat.replaceAll(/L/g, 0).replaceAll(/R/g, 1), 2);
-  return [rowNum, seatNum, rowNum * 8 + seatNum];
-};
+const calcSeatId = (row) =>
+  parseInt(row.replaceAll(/F|L/g, 0).replaceAll(/B|R/g, 1), 2);
 
-const findHighestSeat = (array, rowCount) =>
-  array.reduce((acc, row) => {
-    const seatId = calcRow(row, rowCount)[2];
-    return seatId > acc ? seatId : acc;
-  }, 0);
+// const findHighestSeat = (array) =>
+//   array.reduce((acc, row) => Math.max(acc, calcSeatId(row)), 0);
 
-const findMissingSeats = (arr, rowCount) => {
-  const seats = arr.map((row) => calcRow(row, rowCount)[2]);
-  seats.sort((a, b) => a - b);
-  console.log("The seat ids sorted are", seats);
-  const beforeMissingSeat = seats.reduce((acc, seat, i) => {
-    if (seats[i - 1] + 1 != seat) {
-      acc.push(seats[i - 1]);
-    }
-    return acc;
-  }, []);
-  console.log("The seats before the missing seats are", beforeMissingSeat);
-};
+const findHighestSeat = (array) =>
+  Math.max(...array.map((row) => calcSeatId(row)));
 
-console.log("The missing seats are", findMissingSeats(parseData(input), 7));
+const findLowestSeat = (array) =>
+  array.reduce((acc, row) => Math.min(acc, calcSeatId(row)), 999);
 
+const findMissingSeats = (arr) =>
+  arr
+    .map((row) => calcSeatId(row))
+    .sort((a, b) => a - b)
+    .reduce(
+      (acc, seat, i, seats) =>
+        seats[i - 1] != seat - 1 && i != 0 ? acc.push(seat - 1) && acc : acc,
+      []
+    );
+
+//A: 747
+console.log("The missing seats are", findMissingSeats(parseData(input)));
+
+//A: 922
 console.log(
   "The highest seat id in the dataset is",
-  findHighestSeat(parseData(input), 7)
+  findHighestSeat(parseData(input))
 );
 
-module.exports = { parseData, calcRow, findHighestSeat };
+//A: 48
+console.log(
+  "The lowest seat id in the dataset is",
+  findLowestSeat(parseData(input))
+);
+
+module.exports = { parseData, findHighestSeat, calcSeatId };
