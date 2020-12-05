@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest day5.test.js --collect-coverage",
     "day1": "node day1.js",
     "day2": "node day2.js",
     "day3": "node day3.js",
