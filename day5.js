@@ -7,7 +7,7 @@ const calcRow = (input, rowCount) => {
   const seat = input.substring(rowCount);
   const rowNum = parseInt(row.replaceAll(/F/g, 0).replaceAll(/B/g, 1), 2);
   const seatNum = parseInt(seat.replaceAll(/F/g, 0).replaceAll(/B/g, 1), 2);
-  return [rowNum, seatNum];
+  return [rowNum, seatNum, rowNum*8+seatNum];
 };
 
 module.exports = { calcRow };
