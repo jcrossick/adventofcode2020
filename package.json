@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test6": "jest day6.test.js",
+    "test7": "jest day7.test.js",
     "test": "jest --collect-coverage",
     "day1": "node day1.js",
     "day2": "node day2.js",
     "day3": "node day3.js",
     "day4": "node day4.js",
     "day5": "node day5.js",
-    "day6": "node day6.js"
+    "day6": "node day6.js",
+    "day7": "node day7.js"
   },
   "repository": {
     "type": "git",
