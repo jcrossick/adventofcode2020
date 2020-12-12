@@ -24,4 +24,34 @@ const findFirstNonSum = (inputNumbers) => {
     return firstNonSum;
 }
 
+const findContiguousSum = (input, targetSum) => {
+
+    let i = 0;
+    let j = 0;
+    let hasAnswer = false;
+    for(i = 0; i < input.length; i++) {
+        let contiguousSum = input[i];
+        j = i+1;
+        while (contiguousSum < targetSum) {
+            contiguousSum = contiguousSum + input[j];
+            if (contiguousSum == targetSum) {
+                hasAnswer = true;
+                break;
+            }
+            j++;
+        }
+        if (hasAnswer) {
+            break;
+        }
+    }
+
+    const range = input.slice(i, j+1);
+    range.sort((a, b) => a-b);
+    return range[0] + range[range.length - 1];
+}
+
+//177777905
 console.log("Running part 1", findFirstNonSum(inputNumbers));
+
+//23463012
+console.log("running part 2", findContiguousSum(inputNumbers, 177777905));
