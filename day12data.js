@@ -3,6 +3,12 @@ F10
 L270
 F20`;
 
+const testInput2 = `F10
+N3
+F7
+R90
+F11`
+
 const input = `E1
 S4
 W5
@@ -782,4 +788,4 @@ R270
 N5
 W4
 F40`;
-module.exports = { input, testInput1 };
+module.exports = { input, testInput1, testInput2 };

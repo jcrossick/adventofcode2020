@@ -1,4 +1,4 @@
-const { input, testInput1 } = require("./day12data");
+const { input, testInput1, testInput2 } = require("./day12data");
 const parseArray = (input) =>
   input.split(/\n/).map((entry) => {
     return {
@@ -21,7 +21,7 @@ const parseArray = (input) =>
 // Action R means to turn right the given number of degrees.
 // Action F means to move forward by the given value in the direction the ship is currently facing.
 
-const consolidatedMoves = (input) =>
+const consolidatedMovesPart1 = (input) =>
   input.reduce(
     (acc, row) => {
       switch (row.action) {
@@ -52,6 +52,45 @@ const consolidatedMoves = (input) =>
     { direction: 1, position: [0, 0, 0, 0] }
   );
 
+const consolidatedMovesPart2 = (input, position) => {
+  let waypoint = position;
+  let ship = [0, 0];
+  input.forEach((row) => {
+    switch (row.action) {
+      case "E":
+        waypoint[0] = waypoint[0] + row.move;
+        break;
+      case "W":
+        waypoint[0] = waypoint[0] - row.move;
+        break;
+      case "N":
+        waypoint[1] = waypoint[1] + row.move;
+        break;
+      case "S":
+        waypoint[1] = waypoint[1] - row.move;
+        break;
+      case "F":
+        ship = [
+          ship[0] + row.move * waypoint[0],
+          ship[1] + row.move * waypoint[1],
+        ];
+        break;
+      case "R":
+        for (let i = 0; i < row.move / 90; i++) {
+          waypoint = [waypoint[1], waypoint[0] * -1];
+        }
+        break;
+      case "L":
+        for (let i = 0; i < row.move / 90; i++) {
+          waypoint = [waypoint[1] * -1, waypoint[0]];
+        }
+        break;
+    }
+    console.log("ship is", ship);
+  });
+  return ship;
+};
+
 //Test one:
 //Right three turns E -> S -> W -> N
 //Forward 10 (North)
@@ -61,6 +100,10 @@ const consolidatedMoves = (input) =>
 //console.log(consolidatedMoves(parseArray(testInput1)));
 
 //Actual run
-const endPosition = consolidatedMoves(parseArray(input)).position;
+//Part 1 - 2847
+const endPosition = consolidatedMovesPart2(parseArray(input), [10, 1]);
 console.log(endPosition);
-console.log("Manhatten distance is", Math.abs(endPosition[0]-endPosition[2])+ Math.abs(endPosition[1]-endPosition[3]));
+console.log(
+  "Manhatten distance is",
+  Math.abs(endPosition[0]) + Math.abs(endPosition[1])
+);
