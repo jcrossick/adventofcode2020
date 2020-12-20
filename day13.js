@@ -1,5 +1,3 @@
-const { input } = require("./day11data");
-
 const leaveAt = 1000067;
 const busInput = `17,x,x,x,x,x,x,x,x,x,x,37,x,x,x,x,x,439,x,29,x,x,x,x,x,x,x,x,x,x,13,x,x,x,x,x,x,x,x,x,23,x,x,x,x,x,x,x,787,x,x,x,x,x,x,x,x,x,41,x,x,x,x,x,x,x,x,19`;
 const testInput = `7,13,x,x,59,x,31,19`;
@@ -54,4 +52,4 @@ const findTimeStamp = (input) => {
   return timestamp;
 };
 
-console.log("Part 2 is", findTimeStamp(busIndexes(busInput)));
+console.log("Part 2 is", findTimeStamp(busIndexes(busInput))); //803025030761664
